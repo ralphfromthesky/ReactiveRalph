@@ -6,9 +6,11 @@ const UseImperativeHandleChild = forwardRef((props, ref) => {
   const [toggle, setToggle] = useState(false);
 
   useImperativeHandle(ref, () => ({
-    actionToggle() {
-        setToggle(!toggle)
+    clickToggle() {
+      setToggle(!toggle)
     }
+    
+
   }))
   return (
     <>

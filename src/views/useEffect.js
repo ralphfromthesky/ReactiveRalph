@@ -6,12 +6,12 @@ import Typography from "@mui/material/Typography";
 import GlobalModal from "../components/material/globalModal";
 import { changeTheme } from "../store/store.tsx";
 
-
 const UseEffect = () => {
   const [click, receivedClick] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   const messageFromParentUseState = "this modal run when components loads";
-  const {dark} = changeTheme()
+  const { dark } = changeTheme();
+  const [name, changeName] = useState("ralph");
 
   const receivedClickFromChild = (data) => {
     receivedClick(data);
@@ -23,19 +23,35 @@ const UseEffect = () => {
   };
   useEffect(() => {
     setOpenModal(true);
-  }, []);
+    setTimeout(() => {
+      alert("ano na?");
+    }, 1000);
+  }, [name]);
   return (
     <Main>
-      <Box sx={{padding: '20px'}}>
-        <Typography variant="h3" color="initial" sx={{color: dark ? 'black' : 'white' }}>
+      <Box sx={{ padding: "20px" }}>
+        <Typography
+          variant="h3"
+          color="initial"
+          sx={{ color: dark ? "black" : "white" }}
+        >
           -=[this is the useEffect]=-
           <br />
           this click from {click} times comes from child using useEffects
         </Typography>
         <UseEffectChild clickFromChild={receivedClickFromChild} />
+        <div onClick={() => changeName('santolorin')}>
 
+          click this to rerender = {name}
+        
+        </div>
         <Box>
-          <Typography variant="h6" color="initial" component="p" sx={{color: dark ? 'black' : 'white' }}>
+          <Typography
+            variant="h6"
+            color="initial"
+            component="p"
+            sx={{ color: dark ? "black" : "white" }}
+          >
             Scenario: <br />
             In a React component, you might need to perform certain actions or
             side effects in response to changes in the component, such as
@@ -50,7 +66,12 @@ const UseEffect = () => {
           <img src="image/useEffect.png" />
           <img src="image/useEffect2.png" />
           <Box>
-            <Typography variant="h6" color="initial" component="p" sx={{color: dark ? 'black' : 'white' }}>
+            <Typography
+              variant="h6"
+              color="initial"
+              component="p"
+              sx={{ color: dark ? "black" : "white" }}
+            >
               Explanation: <br /> useEffect takes two arguments: a function to
               execute (the effect) and an optional dependency array. The effect
               function is executed after each render. The optional dependency

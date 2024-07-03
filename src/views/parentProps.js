@@ -48,6 +48,17 @@ const Parentprops = () => {
     { name: "bell", age: 35, location: "singapore" },
     { name: "khalifa", age: 40, location: "manila" },
   ];
+
+  const mgaNagingJow = [
+    {name: 'joan', age: 40},
+    {name: 'marisa', age: 35},
+
+    {name: 'paula', age: 41},
+
+    {name: 'karyle', age: 40},
+
+  ]
+  const malakingTae = 'napakalaking tae'
   return (
     <Main>
       <Box sx={{ padding: "20px" }}>
@@ -67,6 +78,7 @@ const Parentprops = () => {
           open global modal
         </Button>
         <PropsChildren
+        mgaDatingJowa= {mgaNagingJow}
           mgaStudyante={students}
           newName="i am ralph rigor santolorin"
           message="this message comes from parent"
@@ -133,6 +145,7 @@ const Parentprops = () => {
         saradoClose={handleCloseGloabalModal}
         msgFromParent={notesFromParent}
         objectFromParent={person}
+        tae={malakingTae}
       />
     </Main>
   );

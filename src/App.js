@@ -25,6 +25,9 @@ import Framer from "./views/framer.tsx";
 import CustomElement from "./views/customElement.tsx";
 import ZustandChildViewPage from "./views/zustandChildViewPage.tsx";
 import Api from "./views/api.tsx";
+import UserRouter from "./views/userRouter.tsx";
+import PrivateRoutes from "./customHooks/privateRoutes.tsx";
+
 
 // import LazyLoad from "./views/lazyLoad";
 // this lazyloading is for performance speed or code splitting to speed up the loading
@@ -57,7 +60,11 @@ function App() {
         <Route path="/customElement" element={<CustomElement />} />
         <Route path="/zus" element={<ZustandChildViewPage />} />
         <Route path="/useMemo" element={<UseMemo />} />
-        <Route path="/api" element={<Api />} />
+        <Route path="/api" element={<Api />} /> 
+        <Route path="/useRouter" element={<UserRouter />} /> 
+        {/* <PrivateRoutes path='/api' element={<Api/>}/> */}
+
+
 
         <Route path="/nested" element={<Nested />}>
           {/* this index route ('index') use for initially render a link */}

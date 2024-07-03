@@ -34,6 +34,7 @@ import PhishingIcon from "@mui/icons-material/Phishing";
 import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
 import PsychologyIcon from "@mui/icons-material/Psychology";
 import WebhookIcon from "@mui/icons-material/Webhook";
+import RouterIcon from '@mui/icons-material/Router';
 
 export const menuitems = [
   {
@@ -142,6 +143,12 @@ export const menuitems = [
     icon: <WebhookIcon />,
     path: "/api",
   },
+  {
+    text: "useRouter/useLocation",
+    icon: <RouterIcon />,
+    path: "/useRouter",
+  },
+
 ];
 
 function Sidebar({ mode, setMode }, props) {

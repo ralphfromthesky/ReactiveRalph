@@ -34,7 +34,13 @@ const PropsChildren = (props) => {
       ))}
 
       {props.mgaStudyante.map((val, index) => (
-        <h1 key={index}>{val.name} - {index + 1}</h1>
+        <h1 key={index}>{val.name} - {index + 1} -{val.location}</h1>
+      ))}
+
+      {props.mgaDatingJowa.map((val, index) => (
+        <div>
+          {val.name} - {val.age}
+        </div>
       ))}
 
       <MyOwnModal

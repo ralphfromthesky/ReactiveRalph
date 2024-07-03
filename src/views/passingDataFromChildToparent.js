@@ -9,6 +9,8 @@ const PassingDataFromChildToparent = () => {
   const [state, setState] = useState("data from child");
   const [setdata, dataFromChildish] = useState([]);
   const {dark} = changeTheme()
+  const [aquireDataFromChild, setData] = useState()
+  const [sampleBool, setSampleBool] = useState()
 
   const dataFromChild = (data) => {
     setState(data);
@@ -19,6 +21,14 @@ const PassingDataFromChildToparent = () => {
     dataFromChildish(data);
     console.log(data);
   };
+
+  const newData =(data) => {
+    setData(data)
+  }
+  const setNow = (data) => {
+    setSampleBool(data)
+  }
+
   useEffect(() => {
     dataFromkids()
   }, [])
@@ -27,12 +37,16 @@ const PassingDataFromChildToparent = () => {
     <Main>
       <Box sx={{padding: '20px'}}>
         <Box>passingDataFromChildToparent</Box>
+        {aquireDataFromChild && (<div>this show from parent</div>)}
         <Typography variant="h2" color="initial">
           {state}
         </Typography>
+        {sampleBool ? 'this show boolean value' : 'this hides booleanbvalue'}
         <PassingDataFromChildToparentChild
           dataFromChildren={dataFromChild}
           dataFromChild={dataFromkids}
+          newestDataFromChild={newData}
+          setThis={setNow}
         />
 
         <br/>

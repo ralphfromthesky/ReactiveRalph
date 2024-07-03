@@ -13,7 +13,6 @@ function UseState() {
   const initial = 20;
   const [name, setName] = useState("mario");
   const [count, setCount] = useState(initial);
-  const [newName, setNewName] = useState({ firstName: "", lastName: "" });
   const { dark } = changeTheme();
   const [initialState, setState] = useState<any>(0);
   const [activeIndex, setActiveIndex] = useState<any>();
@@ -57,6 +56,10 @@ function UseState() {
   const handleName = () => {
     setName("luigi");
   };
+
+  const bigCount = () => {
+    setCount(count + 1000)
+  }
 
   const active = {
     height: "5rem",
@@ -209,6 +212,7 @@ function UseState() {
         <Button variant="contained" color="error" onClick={reset}>
           reset
         </Button>
+        <Button variant="contained" color="success" onClick={bigCount}> add big</Button>
       </Box>
       <br />
       <Box>

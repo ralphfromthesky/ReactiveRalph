@@ -11,10 +11,13 @@ function UseImperativeHandle() {
         <Button
           variant="contained"
           color="info"
-          onClick={() => buttonRef.current.actionToggle()}
         >
           Botton from parent but function comes from child
         </Button>
+        <div           onClick={() => buttonRef.current.clickToggle()}
+>
+          toggle
+        </div>
         <br />
         <br />
         <UseImperativeHandleChild ref={buttonRef} />

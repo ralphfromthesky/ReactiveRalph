@@ -33,6 +33,7 @@ const GlobalModal = (props) => {
 
       >
         <Box sx={style}>
+          {props.tae}
           {props.newState ? props.addbtn : props.delbtn}
 
           <Typography id="modal-modal-title" variant="h6" component="h2">

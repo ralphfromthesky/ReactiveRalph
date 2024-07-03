@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
-import Main from "../components/main/main";
+import Main from "../components/main/main.js";
 import { Box, Button, Typography } from "@mui/material";
-import UseCallbackChild from "./useCallbackChild";
+import UseCallbackChild from "./useCallbackChild.js";
 import { changeTheme } from "../store/store.tsx";
 
 
