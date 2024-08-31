@@ -37,6 +37,14 @@ const PropsChildren = (props) => {
         <h1 key={index}>{val.name} - {index + 1} -{val.location}</h1>
       ))}
 
+        {props.mgaStudyante.map((item, index) => (
+
+
+          <div key={index}>{item.name} - {index + 10}</div>
+
+        ))}
+
+
       {props.mgaDatingJowa.map((val, index) => (
         <div>
           {val.name} - {val.age}

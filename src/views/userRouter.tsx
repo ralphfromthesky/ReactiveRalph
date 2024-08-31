@@ -6,17 +6,17 @@ import { useLocation, useNavigate } from "react-router-dom";
 const UserRouter = () => {
   const location = useLocation();
   const navigate  = useNavigate()
-  const arrayRoutes = ["/home", "/nested", "/material"];
+  const arrayRoutes = ["/home", "/nested", "/material", '/useRouter'];
 useEffect(() => {
     if(location.pathname === '/useRouter') {
         alert('hoy!')
-        navigate('/aboutMe')
+        // navigate('/aboutMe')
     }
 }, [location, navigate])
   return (
     <Main>
       <div className="[p-1rem]">
-        {arrayRoutes.includes(location.pathname) ? "ralp" : "no"}
+        {arrayRoutes.includes(location.pathname) ? "it has route name" : "no route name"}
         <div className="my-[1rem]">
           useRouter and useLocation are both hooks used in React applications
           for handling routing, but they come from different libraries and serve
