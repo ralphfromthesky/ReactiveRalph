@@ -107,24 +107,51 @@ const QuizzApp = () => {
   ];
 
   const [question, setQuestion] = useState<number>(0);
+  const [answer, setanswer] = useState<string>("");
+  const [rightAnswer, setrightAnswer] = useState<number>(0);
+  const [isAnswered, setisAnswered] = useState<boolean>(false);
+  const [hasAnswred, sethasAnswred] = useState<boolean>(false)
 
   const nextQ = () => {
-    setQuestion(a => a + 1)
-    if(quizQuestions.length = quizQuestions.length) {
-        alert('fasdfadf')
+    if(!hasAnswred) {
+        alert('please select answer');
+        return
     }
-};
+    if (question < quizQuestions.length - 1) {
+      setQuestion((a) => a + 1);
+    } else {
+      alert("no more question");
+    }
+    sethasAnswred(false)
+    
+  };
+
+  const selectAns = (ans: any) => {
+    setanswer(ans);
+    sethasAnswred(true)
+    if (ans === quizQuestions[question].answer && !isAnswered) {
+      setrightAnswer((a) => a + 1);
+      setisAnswered(true);
+    }
+    if (ans !== quizQuestions[question].answer && isAnswered) {
+      setrightAnswer((a) => a - 1);
+      setisAnswered(false);
+    }
+  };
+
   return (
     <div className="mt-[2rem] border-2">
       <div className="text-center mb-[1rem]">QuizzApp</div>
-      {/* {quizQuestions.map((a, i) =>(
-        
-        <div>
-            {a.question}
-        </div>
-    ) )} */}
-      {question} - {quizQuestions.length}
+      {question} / {quizQuestions.length} - {answer}{" "}
+      {quizQuestions[question].answer} - {rightAnswer}
       <div>{quizQuestions[question].question}</div>
+      <div>
+        {Object.entries(quizQuestions[question].options).map(([a, b]) => (
+          <div key={a} onClick={() => selectAns(a)}>
+            {a}: {b}
+          </div>
+        ))}
+      </div>
       <div>
         <ReusableButtons
           title="Next Question"

@@ -18,6 +18,8 @@ const Crud = () => {
     borderRadius: "10px",
   };
 
+const selected = null;
+
   const showGames = (game: string) => {
     alert(game);
   };
