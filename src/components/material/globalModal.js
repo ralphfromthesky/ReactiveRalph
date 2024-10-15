@@ -21,6 +21,10 @@ const GlobalModal = (props) => {
   const handleOpen = () => setOpen(true);
   const object = props.objectFromParent;
 
+  if(props.pinasangData) {
+    alert('fdasf')
+  }
+
   return (
     <div>
       <Modal
@@ -33,6 +37,13 @@ const GlobalModal = (props) => {
 
       >
         <Box sx={style}>
+          {props.pinasangData &&  (
+            <h1>pang malakasang coding</h1>
+          )}
+
+          {props.pinasangData ? 'hoy' : 'gising'}
+
+          <br/>
           {props.tae}
           {props.newState ? props.addbtn : props.delbtn}
 

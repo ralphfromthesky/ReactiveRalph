@@ -23,6 +23,14 @@ const PropsChildren = (props) => {
 
   return (
     <Box>
+
+    {props.makakalimutinAko.map((val, index) => (
+    <div>
+      {val.name} -{index + 1}
+    </div>
+    ))}
+
+
       <Typography variant="h3" color="initial">
         this is props come from parent - {props.newName}
       </Typography>

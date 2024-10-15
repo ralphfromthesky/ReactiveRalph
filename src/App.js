@@ -27,6 +27,7 @@ import ZustandChildViewPage from "./views/zustandChildViewPage.tsx";
 import Api from "./views/api.tsx";
 import UserRouter from "./views/userRouter.tsx";
 import PrivateRoutes from "./customHooks/privateRoutes.tsx";
+import Crud from './components/apps/crud.tsx'
 
 
 // import LazyLoad from "./views/lazyLoad";
@@ -62,6 +63,8 @@ function App() {
         <Route path="/useMemo" element={<UseMemo />} />
         <Route path="/api" element={<Api />} /> 
         <Route path="/useRouter" element={<UserRouter />} /> 
+        <Route path="/crud" element={<Crud />} /> 
+
         {/* <PrivateRoutes path='/api' element={<Api/>}/> */}
 
 

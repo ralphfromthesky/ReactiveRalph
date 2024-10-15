@@ -148,6 +148,11 @@ export const menuitems = [
     icon: <RouterIcon />,
     path: "/useRouter",
   },
+  {
+    text: "Simple Application",
+    icon: <RouterIcon />,
+    path: "/crud",
+  },
 
 ];
 

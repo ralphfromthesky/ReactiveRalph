@@ -4,6 +4,8 @@ import Main from "../components/main/main";
 import PropsChildren from "./parentPropsChildren";
 import GlobalModal from "../components/material/globalModal";
 import { changeTheme } from "../store/store.tsx";
+import {ReusableButtons} from '../components/reusableComponents/reusableButtons.tsx'
+
 
 const Parentprops = () => {
   const [modalFromChild, openModalFromChild] = useState(false);
@@ -21,6 +23,7 @@ const Parentprops = () => {
     openModalFromChild(falseFromChildComponent);
   };
 
+  const pinasanga = true;
   const notesFromParent = "this notes comes from parent";
   const customModa = "fasdfasdfasdfasdfasdf12309";
   const person = [
@@ -58,10 +61,21 @@ const Parentprops = () => {
     {name: 'karyle', age: 40},
 
   ]
+
+  const makalimutin = [
+    {name: 'joana lisay', age: 35},
+    {name: 'joana mareie', age: 25},
+    {name: 'sandra', age: 25},
+    {name: 'emilyn', age: 35},
+
+  ]
   const malakingTae = 'napakalaking tae'
   return (
     <Main>
       <Box sx={{ padding: "20px" }}>
+        <div>
+          <ReusableButtons title="button ko" bg="red" height="5rem" width="10rem" color="white"/>
+        </div>
         <Typography sx={{ color: dark ? "black" : "white" }}>
           this props parent component
         </Typography>
@@ -88,6 +102,7 @@ const Parentprops = () => {
           newestObject={newObject}
           ing={products}
           anodaw={customModa}
+          makakalimutinAko={makalimutin}
         />
         <br />
         <Box>
@@ -146,6 +161,7 @@ const Parentprops = () => {
         msgFromParent={notesFromParent}
         objectFromParent={person}
         tae={malakingTae}
+        pinasangData={pinasanga}
       />
     </Main>
   );
