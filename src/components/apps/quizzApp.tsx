@@ -54,7 +54,8 @@ const QuizzApp = () => {
       answer: "c",
     },
     {
-      question: "What is the term for a system of millions or billions of stars, together with gas and dust, held together by gravitational attraction?",
+      question:
+        "What is the term for a system of millions or billions of stars, together with gas and dust, held together by gravitational attraction?",
       options: {
         a: "Galaxy",
         b: "Nebula",
@@ -94,7 +95,8 @@ const QuizzApp = () => {
       answer: "c",
     },
     {
-      question: "What is the term for a hypothetical region of space where the gravitational pull is so strong that nothing can escape from it?",
+      question:
+        "What is the term for a hypothetical region of space where the gravitational pull is so strong that nothing can escape from it?",
       options: {
         a: "Wormhole",
         b: "Black Hole",
@@ -104,7 +106,6 @@ const QuizzApp = () => {
       answer: "b",
     },
   ];
-  
 
   const [question, setQuestion] = useState<number>(0);
   const [answer, setanswer] = useState<string>("");
@@ -114,7 +115,7 @@ const QuizzApp = () => {
   const [hideQuestion, sethideQuestion] = useState<boolean>(true);
 
   const nextQ = () => {
-    setisAnswered(false)
+    setisAnswered(false);
     if (!hasAnswred) {
       alert("please select answer");
       return;
@@ -128,6 +129,12 @@ const QuizzApp = () => {
     }
     sethasAnswred(false);
   };
+
+  const add = (a: number, b: number) => ({
+    sum: a + b,
+  });
+
+  const res = add(10, 20);
 
   const selectAns = (ans: any) => {
     setanswer(ans);
@@ -146,10 +153,13 @@ const QuizzApp = () => {
     <div className="mt-[2rem] border-2">
       {hideQuestion && (
         <>
+          <img src="https://github.com/ralphfromthesky/images/blob/main/1.jpg?raw=true" />
           <div className="text-center mb-[1rem]">QuizzApp</div>
           {question} / {quizQuestions.length} - {answer}
           {quizQuestions[question].answer} - {rightAnswer}
-          <div>{quizQuestions[question].question}</div>
+          <div className="text-[2rem] font-bold">
+            {quizQuestions[question].question}
+          </div>
           <div>
             {Object.entries(quizQuestions[question].options).map(([a, b]) => (
               <div

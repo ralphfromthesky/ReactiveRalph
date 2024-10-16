@@ -16,7 +16,7 @@ function Feed() {
       name: "Ralph santolorin",
       id: 1,
       date: "12/12/2015",
-      img: "./image/withkids.jpg",
+      img: "https://github.com/ralphfromthesky/images/blob/main/withkids.jpg?raw=true",
       about: "Yes its About me!",
       about2: `
       Hey there! \uD83D\uDC4B It's me Ralph or GOGO, your friendly neighborhood programmer and solo parent extraordinaire. Life's a whirlwind when you're juggling lines of code and two little munchkins, but hey, wouldn't have it any other way!  \uD83D\uDCBB\uD83D\uDC67\uD83D\uDC66
