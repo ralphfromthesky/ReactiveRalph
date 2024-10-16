@@ -110,25 +110,26 @@ const QuizzApp = () => {
   const [answer, setanswer] = useState<string>("");
   const [rightAnswer, setrightAnswer] = useState<number>(0);
   const [isAnswered, setisAnswered] = useState<boolean>(false);
-  const [hasAnswred, sethasAnswred] = useState<boolean>(false)
+  const [hasAnswred, sethasAnswred] = useState<boolean>(false);
+  const [hideQuestion, sethideQuestion] = useState<boolean>(true);
 
   const nextQ = () => {
-    if(!hasAnswred) {
-        alert('please select answer');
-        return
+    if (!hasAnswred) {
+      alert("please select answer");
+      return;
     }
     if (question < quizQuestions.length - 1) {
       setQuestion((a) => a + 1);
+      setanswer("");
     } else {
       alert("no more question");
     }
-    sethasAnswred(false)
-    
+    sethasAnswred(false);
   };
 
   const selectAns = (ans: any) => {
     setanswer(ans);
-    sethasAnswred(true)
+    sethasAnswred(true);
     if (ans === quizQuestions[question].answer && !isAnswered) {
       setrightAnswer((a) => a + 1);
       setisAnswered(true);
@@ -141,27 +142,45 @@ const QuizzApp = () => {
 
   return (
     <div className="mt-[2rem] border-2">
-      <div className="text-center mb-[1rem]">QuizzApp</div>
-      {question} / {quizQuestions.length} - {answer}{" "}
-      {quizQuestions[question].answer} - {rightAnswer}
-      <div>{quizQuestions[question].question}</div>
-      <div>
-        {Object.entries(quizQuestions[question].options).map(([a, b]) => (
-          <div key={a} onClick={() => selectAns(a)}>
-            {a}: {b}
+      {hideQuestion && (
+        <>
+          <div className="text-center mb-[1rem]">QuizzApp</div>
+          {question} / {quizQuestions.length} - {answer}
+          {quizQuestions[question].answer} - {rightAnswer}
+          <div>{quizQuestions[question].question}</div>
+          <div>
+            {Object.entries(quizQuestions[question].options).map(([a, b]) => (
+              <div
+                key={a}
+                onClick={() => selectAns(a)}
+                className={answer === a ? "bg-[#ecebeb]" : ""}
+              >
+                {a}: {b}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <div>
-        <ReusableButtons
-          title="Next Question"
-          bg="blue"
-          height="2.5rem"
-          width="10rem"
-          color="white"
-          func={nextQ}
-        />
-      </div>
+          <div>
+            {answer && (
+              <ReusableButtons
+                title="Next Question"
+                bg="blue"
+                height="2.5rem"
+                width="100%"
+                color="white"
+                func={nextQ}
+              />
+            )}
+          </div>
+        </>
+      )}
+
+      {!hideQuestion && (
+        <>
+          <div>
+            congratulation!
+          </div>
+        </>
+      )}
     </div>
   );
 };
