@@ -114,6 +114,7 @@ const QuizzApp = () => {
   const [hideQuestion, sethideQuestion] = useState<boolean>(true);
 
   const nextQ = () => {
+    setisAnswered(false)
     if (!hasAnswred) {
       alert("please select answer");
       return;
@@ -122,7 +123,8 @@ const QuizzApp = () => {
       setQuestion((a) => a + 1);
       setanswer("");
     } else {
-      alert("no more question");
+      alert("You just finshed the test");
+      sethideQuestion(false);
     }
     sethasAnswred(false);
   };
@@ -176,8 +178,35 @@ const QuizzApp = () => {
 
       {!hideQuestion && (
         <>
-          <div>
-            congratulation!
+          <div className="text-center text-[2rem] font-bold">
+            congratulation! <br />
+            you got {rightAnswer} out of 10!
+            {rightAnswer <= 5 ? (
+              <>
+                <div className="flex flex-col justify-center">
+                  you failed
+                  <div className="flex justify-center">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSerNfJr-vJiOL5j90bVNFehH8_y8U2U_DR5g&s"
+                      alt=""
+                      className="h-[20rem] w-[20rem] "
+                    />
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex flex-col justify-center">
+                  you pass!
+                  <div className="flex justify-center">
+                    <img
+                      src="https://i.pinimg.com/originals/86/d1/76/86d1767ba3ecb6af8df3e4e5dda376eb.gif"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </>
       )}
