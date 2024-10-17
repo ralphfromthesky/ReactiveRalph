@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ReusableButtons } from "../reusableComponents/reusableButtons.tsx";
 
-const QuizzApp = () => {
+export const QuizzApp = () => {
   const quizQuestions = [
     {
       question: "What is the name of our galaxy?",
@@ -134,8 +134,6 @@ const QuizzApp = () => {
     sum: a + b,
   });
 
-  const res = add(10, 20);
-
   const selectAns = (ans: any) => {
     setanswer(ans);
     sethasAnswred(true);
@@ -154,8 +152,13 @@ const QuizzApp = () => {
       {hideQuestion && (
         <>
           {/* <img src="https://github.com/ralphfromthesky/images/blob/main/1.jpg?raw=true" /> */}
-          <div className="text-center mb-[1rem] text-[2.5rem] font-bold">Simple QuizzApp</div>
-          <div className="flex justify-end"> question {question} / {quizQuestions.length}</div>
+          <div className="text-center mb-[1rem] text-[2.5rem] font-bold">
+            Simple QuizzApp
+          </div>
+          <div className="flex justify-end">
+            {" "}
+            question {question} / {quizQuestions.length}
+          </div>
           {/* {question} / {quizQuestions.length} - {answer}
           {quizQuestions[question].answer} - {rightAnswer} */}
           <div className="text-[2rem] font-bold">
@@ -225,4 +228,81 @@ const QuizzApp = () => {
   );
 };
 
-export default QuizzApp;
+export const TodoApss = () => {
+  const [todo, setTodo] = useState<string>("");
+  const [todoList, settodoList] = useState<Array<{ content: string }>>([]);
+
+  const addTodo = () => {
+    if (todo === "") {
+      alert("dont leave vblank");
+      return;
+    }
+    // settodoList((a) => [...a, { content: todo }]);
+    const newTodo = [...todoList, { content: todo }];
+    settodoList(newTodo);
+    setTodo("");
+    localStorage.setItem("todos", JSON.stringify(newTodo));
+  };
+
+  const handleChange = (index: number, newValue: string) => {
+    const updatedTodos = todoList.map((todoItem, i) =>
+      i === index ? { ...todoItem, content: newValue } : todoItem
+    );
+    settodoList(updatedTodos);
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
+  };
+
+  const deleteTodos = (content: string) => {
+    settodoList((todos) => {
+        const updatedTodos = todos.filter((todo) => todo.content !== content);
+        localStorage.setItem("todos", JSON.stringify(updatedTodos)); 
+        return updatedTodos; 
+    });
+};
+
+  useEffect(() => {
+    const storedTodo = localStorage.getItem("todos");
+    if (storedTodo) {
+      try {
+        settodoList(JSON.parse(storedTodo));
+      } catch (error) {
+        alert(error);
+      }
+    }
+  }, []);
+
+  return (
+    <div>
+      <div className="border-2 rounded flex flex-col p-1">
+        <div className="text-[2rem] font-bold">Simple todo apps</div>
+        <input
+          type="text"
+          className="border-2 h-[3rem] mt-2"
+          value={todo}
+          onChange={(e) => setTodo(e.target.value)}
+        />
+        <button
+          className="bg-blue h-[2rem] bg-emerald-500 text-white"
+          onClick={addTodo}
+        >
+          Add
+        </button>
+      </div>
+      <div className="flex flex-col">
+        {todoList.map((a, b) => (
+          <>
+           <div className="flex"> 
+            <input
+              type="text"
+              key={b}
+              value={a.content}
+              onChange={(e) => handleChange(b, e.target.value)}
+            />
+            <button onClick={() => deleteTodos(a.content)}>DEL</button>
+            </div>
+          </>
+        ))}
+      </div>
+    </div>
+  );
+};

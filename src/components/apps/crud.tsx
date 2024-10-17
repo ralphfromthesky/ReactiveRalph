@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Main from "../main/main";
-import QuizzApp from "./quizzApp.tsx";
+import {QuizzApp,TodoApss} from "./quizzApp.tsx";
 const Crud = () => {
   const sampleApps = [
     { title: "Todo Apps" },
@@ -57,11 +57,13 @@ const Crud = () => {
       {todo && <div>
         
         
+        <div>
+          <input type="text" />
+        </div>
         
         
         
-        
-        
+        <TodoApss/>
         
         
         
