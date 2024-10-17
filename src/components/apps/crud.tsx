@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Main from "../main/main";
-import QuizzApp from './quizzApp.tsx'
+import QuizzApp from "./quizzApp.tsx";
 const Crud = () => {
   const sampleApps = [
     { title: "Todo Apps" },
@@ -18,10 +18,28 @@ const Crud = () => {
     borderRadius: "10px",
   };
 
-const selected = null;
+  const [todo, openTodo] = useState<any>(false);
+  const [calculator, opencalculator] = useState<any>(false);
+  const [quizApp, openquizApp] = useState<any>(false);
+  const [weattherapp, setweattherapp] = useState<any>(false);
 
   const showGames = (game: string) => {
-    alert(game);
+    openTodo(false);
+    opencalculator(false);
+    openquizApp(false);
+    setweattherapp(false);
+    if (game === "Todo Apps") {
+      openTodo(true);
+    }
+    if (game === "Calculator") {
+      opencalculator(true);
+    }
+    if (game === "Quizz Apps") {
+      openquizApp(true);
+    }
+    if (game === "setweattherapp") {
+      setweattherapp(true);
+    }
   };
 
   return (
@@ -33,10 +51,14 @@ const selected = null;
           </div>
         ))}
       </div>
-
-      <div>
-        <QuizzApp />
-      </div>
+      {todo && <div>todo</div>}
+      {calculator && <div>calcu</div>}
+      {quizApp && (
+        <div>
+          <QuizzApp />
+        </div>
+      )}
+      {weattherapp && <div>weatther</div>}
     </Main>
   );
 };

@@ -153,7 +153,7 @@ const QuizzApp = () => {
     <div className="mt-[2rem] border-2">
       {hideQuestion && (
         <>
-          <img src="https://github.com/ralphfromthesky/images/blob/main/1.jpg?raw=true" />
+          {/* <img src="https://github.com/ralphfromthesky/images/blob/main/1.jpg?raw=true" /> */}
           <div className="text-center mb-[1rem]">QuizzApp</div>
           {question} / {quizQuestions.length} - {answer}
           {quizQuestions[question].answer} - {rightAnswer}
