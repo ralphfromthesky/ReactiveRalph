@@ -254,11 +254,11 @@ export const TodoApss = () => {
 
   const deleteTodos = (content: string) => {
     settodoList((todos) => {
-        const updatedTodos = todos.filter((todo) => todo.content !== content);
-        localStorage.setItem("todos", JSON.stringify(updatedTodos)); 
-        return updatedTodos; 
+      const updatedTodos = todos.filter((todo) => todo.content !== content);
+      localStorage.setItem("todos", JSON.stringify(updatedTodos));
+      return updatedTodos;
     });
-};
+  };
 
   useEffect(() => {
     const storedTodo = localStorage.getItem("todos");
@@ -291,18 +291,51 @@ export const TodoApss = () => {
       <div className="flex flex-col">
         {todoList.map((a, b) => (
           <>
-           <div className="flex"> 
-            <input
-              type="text"
-              key={b}
-              value={a.content}
-              onChange={(e) => handleChange(b, e.target.value)}
-            />
-            <button onClick={() => deleteTodos(a.content)}>DEL</button>
+            <div className="flex">
+              <input
+                type="text"
+                key={b}
+                value={a.content}
+                onChange={(e) => handleChange(b, e.target.value)}
+              />
+              <button onClick={() => deleteTodos(a.content)}>DEL</button>
             </div>
           </>
         ))}
       </div>
+    </div>
+  );
+};
+
+export const Calcu = () => {
+  const [number, setnumber] = useState<any>(0)
+  const showNums = (nums: number) => {
+    setnumber(nums)
+  }
+  return (
+    <div>
+      <div className="flex justify-center mt-[2rem]">Simple calculator</div>
+      <div>
+        <div className="border-2 border-black h-[3rem] rounded-sm my-2 flex justify-center items-center font-bold">
+          {number}
+        </div>
+      <div className="flex gap-1 flex-wrap">
+        <span className="border-2 border-[black] p-5 rounded-md" onClick={() => showNums(0)}>0</span>
+        <span className="border-2 border-[black] p-5 rounded-md" onClick={() => showNums(1)}>1</span>
+        <span className="border-2 border-[black] p-5 rounded-md" onClick={() => showNums(2)}>2</span>
+        <span className="border-2 border-[black] p-5 rounded-md" onClick={() => showNums(3)}>3</span>
+        <span className="border-2 border-[black] p-5 rounded-md">4</span>
+        <span className="border-2 border-[black] p-5 rounded-md">5</span>
+        <span className="border-2 border-[black] p-5 rounded-md">6</span>
+        <span className="border-2 border-[black] p-5 rounded-md">7</span>
+        <span className="border-2 border-[black] p-5 rounded-md">8</span>
+        <span className="border-2 border-[black] p-5 rounded-md">9</span>
+        <span className="border-2 border-[black] p-5 rounded-md">-</span>
+        <span className="border-2 border-[black] p-5 rounded-md">+</span>
+        <span className="border-2 border-[black] p-5 rounded-md">/</span>
+        <span className="border-2 border-[black] p-5 rounded-md">*</span>
+      </div>
+    </div>
     </div>
   );
 };

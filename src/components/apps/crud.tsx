@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Main from "../main/main";
-import {QuizzApp,TodoApss} from "./quizzApp.tsx";
+import { QuizzApp, TodoApss, Calcu } from "./quizzApp.tsx";
 const Crud = () => {
   const sampleApps = [
     { title: "Todo Apps" },
@@ -11,7 +11,7 @@ const Crud = () => {
   const ownStyle = {
     height: "5rem",
     width: "6rem",
-    display: "flex", 
+    display: "flex",
     justifyContent: "center",
     alignItems: "center",
     border: "1px solid black",
@@ -19,18 +19,17 @@ const Crud = () => {
   };
 
   const [todo, openTodo] = useState<boolean>(false);
-  const [calculator, opencalculator] = useState<boolean>(false);
+  const [calculator, opencalculator] = useState<boolean>(true);
   const [quizApp, openquizApp] = useState<boolean>(false);
   const [weattherapp, setweattherapp] = useState<boolean>(false);
-  const [selected, setSelected] = useState<String>('')
-  
+  const [selected, setSelected] = useState<String>("");
 
   const showGames = (game: string) => {
     openTodo(false);
     opencalculator(false);
     openquizApp(false);
     setweattherapp(false);
-    setSelected(game)
+    setSelected(game);
     if (game === "Todo Apps") {
       openTodo(true);
     }
@@ -47,29 +46,31 @@ const Crud = () => {
 
   return (
     <Main>
-      <div className="border-2 grid gap-2 grid-cols-2">
+      <div className="border-2 flex gap-2 flex-wrap">
         {sampleApps.map((a, i) => (
-          <div style={ownStyle} key={i} onClick={() => showGames(a.title)} className={ selected === a.title ? 'bg-[#e0dfdf]' : ''}>
+          <div
+            style={ownStyle}
+            key={i}
+            onClick={() => showGames(a.title)}
+            className={selected === a.title ? "bg-[#e0dfdf]" : ""}
+          >
             {a.title}
           </div>
         ))}
       </div>
-      {todo && <div>
-        
-        
+      {todo && (
         <div>
-          <input type="text" />
+          <div>
+            <input type="text" />
+          </div>
+
+          <TodoApss />
         </div>
+      )}
+      {calculator && (<div>
         
-        
-        
-        <TodoApss/>
-        
-        
-        
-        
-        </div>}
-      {calculator && <div>calcu</div>}
+       <Calcu/> 
+        </div>)}
       {quizApp && (
         <div>
           <QuizzApp />
