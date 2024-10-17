@@ -154,9 +154,10 @@ const QuizzApp = () => {
       {hideQuestion && (
         <>
           {/* <img src="https://github.com/ralphfromthesky/images/blob/main/1.jpg?raw=true" /> */}
-          <div className="text-center mb-[1rem]">QuizzApp</div>
-          {question} / {quizQuestions.length} - {answer}
-          {quizQuestions[question].answer} - {rightAnswer}
+          <div className="text-center mb-[1rem] text-[2.5rem] font-bold">Simple QuizzApp</div>
+          <div className="flex justify-end"> question {question} / {quizQuestions.length}</div>
+          {/* {question} / {quizQuestions.length} - {answer}
+          {quizQuestions[question].answer} - {rightAnswer} */}
           <div className="text-[2rem] font-bold">
             {quizQuestions[question].question}
           </div>
