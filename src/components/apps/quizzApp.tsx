@@ -400,7 +400,8 @@ export const WeatherApp = () => {
   const api_key = "ae3335d94a1cbbff33e8ba9bab5de492";
   const htttps = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
   const [datas, setData] = useState<WeatherData | null>(null);
-  
+  const [errors, setError] = useState<string>("");
+
   interface WeatherData {
     weather: string;
     main: {
@@ -408,6 +409,7 @@ export const WeatherApp = () => {
       humidity: number;
     };
     name: string;
+    message: string;
   }
   const searchCity = () => {
     if (city === "") {
@@ -424,15 +426,14 @@ export const WeatherApp = () => {
     queryFn: async () => {
       const response = await axios.get(htttps);
       setData(response.data);
-      return response.data
+      if (response.data.message) {
+        alert('adsfasdf')
+      }
+      return response.data;
     },
-    // select: (data) => {
-    //   return setData(data.data);
-    // },
+
   });
 
-
-  
   return (
     <div>
       <div className="text-center flex flex-col">
@@ -451,8 +452,10 @@ export const WeatherApp = () => {
           className="border-2 border-[green] h-[3rem] rounded-[.5rem] my-2"
           onChange={(e) => setCity(e.target.value)}
         />
+        {errors?.message}
+        {datas?.message ? 'err' : ''}
         <ReusableButtons
-          title="Next Question"
+          title="Search Weather"
           bg="green"
           height="2.5rem"
           width="100%"
@@ -461,19 +464,71 @@ export const WeatherApp = () => {
         />
       </div>
 
-      {datas ? (<>
-      
-      <div className="flex flex-col">
-        <span>Country: {datas?.name}</span>
-        <span>weather: {datas?.weather[0]?.main}</span>
-      </div>
-      {datas?.weather[0].main === 'Rain' && 'its raining'}
-      {datas?.weather[0].main === 'Clear' && 'its raining'}
-      {datas?.weather[0].main === 'Fog' && 'its fog'}
+      {datas ? (
+        <>
+          <div className="flex justify-between items-center">
+            <div className="flex flex-col">
+              <span className="text-[1.5rem] font-bold">
+                Country: {datas?.name}
+              </span>
+              <span className="text-[1.2rem]">
+                weather: {datas?.weather[0]?.main}
+              </span>
+              <span className="text-[1rem]">temp: {datas?.main?.temp}</span>
+            </div>
+            <div>
+              {datas?.weather[0].main === "Rain" && (
+                <span className="text-[1rem] font-bold">
+                  the weather is Raining!
+                </span>
+              )}
 
-
-      
-      </>) : 'search for a country'}
+              {datas?.weather[0].main === "Clear" && (
+                <span className="text-[1rem] font-bold">
+                  the weather is Clear!
+                </span>
+              )}
+              {datas?.weather[0].main === "Fog" && (
+                <span className="text-[1rem] font-bold">
+                  the weather is Foggy!
+                </span>
+              )}
+            </div>
+          </div>
+          {datas?.weather[0].main === "Rain" && (
+            <>
+              <div>
+                <img
+                  src="https://thumbs.dreamstime.com/b/raindrops-window-pane-s-raining-outside-rainy-autumn-day-sun-shines-leaves-houseplant-196934806.jpg"
+                  alt=""
+                />
+              </div>
+            </>
+          )}
+          {datas?.weather[0].main === "Clear" && (
+            <>
+              <div>
+                <img
+                  src="https://media.istockphoto.com/id/1007768414/photo/blue-sky-with-bright-sun-and-clouds.jpg?s=612x612&w=0&k=20&c=MGd2-v42lNF7Ie6TtsYoKnohdCfOPFSPQt5XOz4uOy4="
+                  alt=""
+                />
+              </div>
+            </>
+          )}
+          {datas?.weather[0].main === "Fog" && (
+            <>
+              <div>
+                <img
+                  src="https://static.wikia.nocookie.net/weather/images/f/fc/Fog.jpeg/revision/latest/scale-to-width-down/500?cb=20120804193216"
+                  alt=""
+                />
+              </div>
+            </>
+          )}
+        </>
+      ) : (
+        "search for a country"
+      )}
     </div>
   );
 };
