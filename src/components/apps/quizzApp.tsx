@@ -400,7 +400,7 @@ export const WeatherApp = () => {
   const api_key = "ae3335d94a1cbbff33e8ba9bab5de492";
   const htttps = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
   const [datas, setData] = useState<WeatherData | null>(null);
-  const [errors, setError] = useState<string>("");
+  const [errorers, setError] = useState<string | null>("");
 
   interface WeatherData {
     weather: string;
@@ -420,16 +420,25 @@ export const WeatherApp = () => {
     setCity("");
   };
 
-  const { refetch, data, isLoading, isFetching } = useQuery<WeatherData>({
+  const { refetch, data, isLoading, isFetching, isError, error } = useQuery<WeatherData>({
     queryKey: ["city"],
     enabled: false,
     queryFn: async () => {
-      const response = await axios.get(htttps);
-      setData(response.data);
-      if (response.data.message) {
-        alert('adsfasdf')
+      try {
+        const response = await axios.get(htttps);
+
+        if (response.data.cod === "404") {
+          setError(response.data.message); 
+          return null; 
+        } else {
+          setError(null); 
+          setData(response.data); 
+          return response.data;
+        }
+      } catch (err: any) {
+        setError(err.response?.data?.message || "An error occurred");
+        throw new Error(err); 
       }
-      return response.data;
     },
 
   });
@@ -452,8 +461,7 @@ export const WeatherApp = () => {
           className="border-2 border-[green] h-[3rem] rounded-[.5rem] my-2"
           onChange={(e) => setCity(e.target.value)}
         />
-        {errors?.message}
-        {datas?.message ? 'err' : ''}
+        {errorers}
         <ReusableButtons
           title="Search Weather"
           bg="green"
