@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+
 import { ReusableButtons } from "../reusableComponents/reusableButtons.tsx";
+import axios from "axios";
 
 export const QuizzApp = () => {
   const quizQuestions = [
@@ -156,7 +159,6 @@ export const QuizzApp = () => {
             Simple QuizzApp
           </div>
           <div className="flex justify-end">
-            {" "}
             question {question} / {quizQuestions.length}
           </div>
           {/* {question} / {quizQuestions.length} - {answer}
@@ -274,10 +276,12 @@ export const TodoApss = () => {
   return (
     <div>
       <div className="border-2 rounded flex flex-col p-1">
-        <div className="text-[2rem] font-bold">Simple todo apps</div>
+        <div className="text-[2rem] font-bold text-center">
+          Simple todo apps
+        </div>
         <input
           type="text"
-          className="border-2 h-[3rem] mt-2"
+          className="border-2 border-emerald-500 h-[3rem] rounded-[.5rem] my-2"
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
         />
@@ -308,34 +312,168 @@ export const TodoApss = () => {
 };
 
 export const Calcu = () => {
-  const [number, setnumber] = useState<any>(0)
-  const showNums = (nums: number) => {
-    setnumber(nums)
-  }
+  const [number, setnumber] = useState<any>("");
+  const [secondnumber, setsecondnumber] = useState<any>("");
+  const [isNextNumb, setisNextNumb] = useState<boolean>(false);
+  const [operator, setoperator] = useState<any>("");
+  const allnums = [number, secondnumber];
+
+  const firstNum = (nums: string) => {
+    setnumber((prev: any) => prev + nums);
+  };
+  const secondNum = (num: any) => {
+    setsecondnumber(num);
+  };
+  const clickOperator = (operator: any) => {
+    setoperator(operator);
+    setisNextNumb(true);
+  };
+
+  const showTotal = () => {
+    return;
+  };
+
   return (
     <div>
-      <div className="flex justify-center mt-[2rem]">Simple calculator</div>
+      <div className="flex justify-center mt-[2rem]">
+        Simple calculator{allnums}
+      </div>
       <div>
         <div className="border-2 border-black h-[3rem] rounded-sm my-2 flex justify-center items-center font-bold">
           {number}
+          {operator}
+          {secondnumber}
         </div>
-      <div className="flex gap-1 flex-wrap">
-        <span className="border-2 border-[black] p-5 rounded-md" onClick={() => showNums(0)}>0</span>
-        <span className="border-2 border-[black] p-5 rounded-md" onClick={() => showNums(1)}>1</span>
-        <span className="border-2 border-[black] p-5 rounded-md" onClick={() => showNums(2)}>2</span>
-        <span className="border-2 border-[black] p-5 rounded-md" onClick={() => showNums(3)}>3</span>
-        <span className="border-2 border-[black] p-5 rounded-md">4</span>
-        <span className="border-2 border-[black] p-5 rounded-md">5</span>
-        <span className="border-2 border-[black] p-5 rounded-md">6</span>
-        <span className="border-2 border-[black] p-5 rounded-md">7</span>
-        <span className="border-2 border-[black] p-5 rounded-md">8</span>
-        <span className="border-2 border-[black] p-5 rounded-md">9</span>
-        <span className="border-2 border-[black] p-5 rounded-md">-</span>
-        <span className="border-2 border-[black] p-5 rounded-md">+</span>
-        <span className="border-2 border-[black] p-5 rounded-md">/</span>
-        <span className="border-2 border-[black] p-5 rounded-md">*</span>
+        <div className="flex gap-1 flex-wrap">
+          <span
+            className="border-2 border-[black] p-5 rounded-md"
+            onClick={() => firstNum("0")}
+          >
+            0
+          </span>
+          <span
+            className="border-2 border-[black] p-5 rounded-md"
+            onClick={() => (isNextNumb ? secondNum("2") : firstNum("1"))}
+          >
+            1
+          </span>
+          <span
+            className="border-2 border-[black] p-5 rounded-md"
+            onClick={() => firstNum("2")}
+          >
+            2
+          </span>
+          <span
+            className="border-2 border-[black] p-5 rounded-md"
+            onClick={() => firstNum("3")}
+          >
+            3
+          </span>
+          <span className="border-2 border-[black] p-5 rounded-md">4</span>
+          <span className="border-2 border-[black] p-5 rounded-md">5</span>
+          <span className="border-2 border-[black] p-5 rounded-md">6</span>
+          <span className="border-2 border-[black] p-5 rounded-md">7</span>
+          <span className="border-2 border-[black] p-5 rounded-md">8</span>
+          <span className="border-2 border-[black] p-5 rounded-md">9</span>
+          <span
+            className="border-2 border-[black] p-5 rounded-md"
+            onClick={() => clickOperator("-")}
+          >
+            -
+          </span>
+          <span
+            className="border-2 border-[black] p-5 rounded-md"
+            onClick={() => clickOperator("+")}
+          >
+            +
+          </span>
+          <span className="border-2 border-[black] p-5 rounded-md">/</span>
+          <span className="border-2 border-[black] p-5 rounded-md">*</span>
+        </div>
       </div>
     </div>
+  );
+};
+
+export const WeatherApp = () => {
+  const [city, setCity] = useState<string>("");
+  const api_key = "ae3335d94a1cbbff33e8ba9bab5de492";
+  const htttps = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
+  const [datas, setData] = useState<WeatherData | null>(null);
+  
+  interface WeatherData {
+    weather: string;
+    main: {
+      temp: number;
+      humidity: number;
+    };
+    name: string;
+  }
+  const searchCity = () => {
+    if (city === "") {
+      alert("pls input city");
+      return;
+    }
+    refetch();
+    setCity("");
+  };
+
+  const { refetch, data, isLoading, isFetching } = useQuery<WeatherData>({
+    queryKey: ["city"],
+    enabled: false,
+    queryFn: async () => {
+      const response = await axios.get(htttps);
+      setData(response.data);
+      return response.data
+    },
+    // select: (data) => {
+    //   return setData(data.data);
+    // },
+  });
+
+
+  
+  return (
+    <div>
+      <div className="text-center flex flex-col">
+        <div className="text-[2rem] font-bold text-blue-600">
+          Simple Weather apps
+        </div>
+        {isFetching ? (
+          <div className="flex justify-end">Loading...</div>
+        ) : (
+          <div className="flex justify-end">Weather fetched!</div>
+        )}
+
+        <input
+          type="text"
+          value={city}
+          className="border-2 border-[green] h-[3rem] rounded-[.5rem] my-2"
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <ReusableButtons
+          title="Next Question"
+          bg="green"
+          height="2.5rem"
+          width="100%"
+          color="white"
+          func={searchCity}
+        />
+      </div>
+
+      {datas ? (<>
+      
+      <div className="flex flex-col">
+        <span>Country: {datas?.name}</span>
+        <span>weather: {datas?.weather[0]?.main}</span>
+      </div>
+      {datas?.weather[0].main === 'Rain' && 'its raining'}
+      {datas?.weather[0].main === 'Clear' && 'its raining'}
+      {datas?.weather[0].main === 'Fog' && 'its fog'}
+
+
+      
+      </>) : 'search for a country'}
     </div>
   );
 };

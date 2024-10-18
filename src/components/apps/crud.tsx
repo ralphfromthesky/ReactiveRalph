@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Main from "../main/main";
-import { QuizzApp, TodoApss, Calcu } from "./quizzApp.tsx";
+import { QuizzApp, TodoApss, Calcu, WeatherApp } from "./quizzApp.tsx";
 const Crud = () => {
   const sampleApps = [
     { title: "Todo Apps" },
@@ -19,9 +19,9 @@ const Crud = () => {
   };
 
   const [todo, openTodo] = useState<boolean>(false);
-  const [calculator, opencalculator] = useState<boolean>(true);
+  const [calculator, opencalculator] = useState<boolean>(false);
   const [quizApp, openquizApp] = useState<boolean>(false);
-  const [weattherapp, setweattherapp] = useState<boolean>(false);
+  const [weattherapp, setweattherapp] = useState<boolean>(true);
   const [selected, setSelected] = useState<String>("");
 
   const showGames = (game: string) => {
@@ -67,16 +67,21 @@ const Crud = () => {
           <TodoApss />
         </div>
       )}
-      {calculator && (<div>
-        
-       <Calcu/> 
-        </div>)}
+      {calculator && (
+        <div>
+          <Calcu />
+        </div>
+      )}
       {quizApp && (
         <div>
           <QuizzApp />
         </div>
       )}
-      {weattherapp && <div>weatther</div>}
+      {weattherapp && (
+        <div>
+          <WeatherApp/>
+        </div>
+      )}
     </Main>
   );
 };
