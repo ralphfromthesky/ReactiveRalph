@@ -4,6 +4,7 @@ import postcss from 'postcss';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/ReactJSRalph/',
   plugins: [react()],
   css: {
     postcss: {
