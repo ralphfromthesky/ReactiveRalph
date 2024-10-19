@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Main from "../components/main/main";
+import Main from "../components/main/main.jsx";
 import { Box, Typography, Button } from "@mui/material";
 import { useGetdata, useHandleDeletion } from "../react-query/gethooks.tsx";
-import GlobalModal from "../components/material/globalModal";
+import GlobalModal from "../components/material/globalModal.jsx";
 import { changeTheme, closeglobalModal, passDataFromComponent } from "../store/store.tsx";
 import Loader from "../components/material/loader.tsx";
 import GlobalForm from "../components/material/globalForm.tsx";

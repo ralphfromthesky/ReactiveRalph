@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import Main from "../components/main/main";
+import Main from "../components/main/main.jsx";
 import { Box, Typography, Button } from "@mui/material";
 import { changeTheme } from "../store/store.tsx";
 

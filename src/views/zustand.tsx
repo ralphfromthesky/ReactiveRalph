@@ -12,7 +12,7 @@ import ZustandChild1 from "./zustandChild1.tsx";
 import ZustandChild4 from "./zustandChild4.tsx";
 import ZustandChild3 from "./zustandChild3.tsx";
 import ZustandChild2 from "./zustandChild2.tsx";
-import GlobalModal from "../components/material/globalModal.js";
+import GlobalModal from "../components/material/globalModal.jsx";
 import ZustandAdmin from "./zustandAdmin.tsx";
 
 const Zustand = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
-import Main from "../components/main/main";
+import Main from "../components/main/main.jsx";
 import { Box, Typography } from "@mui/material";
 import { changeTheme } from "../store/store.tsx";
 

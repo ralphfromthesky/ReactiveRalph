@@ -4,10 +4,9 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Post from '../post';
-import { NewItem } from '../new';
 import ZustandChild1 from '../../views/zustandChild1.tsx';
-import TextFiedlGlobal from './textField.js';
-import ReactQuery from '../../views/reactQuery.js';
+import TextFiedlGlobal from './textField.jsx';
+import ReactQuery from '../../views/reactQuery.jsx';
 
 interface TabPanelProps {
   children?: React.ReactNode;

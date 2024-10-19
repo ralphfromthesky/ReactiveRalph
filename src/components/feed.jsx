@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Post from "./post";
+import Post from "./post.jsx";
 import { Box } from "@mui/material";
-import Main from "./main/main";
+import Main from "./main/main.jsx";
 import { useGetdata } from "../react-query/gethooks.tsx";
 
 function Feed() {

@@ -1,9 +1,9 @@
 import { Box, Stack, ThemeProvider, createTheme } from "@mui/material";
 import React, { useState } from "react";
-import Navbar from "../navbar";
-import Sidebar from "../sidebar";
-import Rightbar from "../rightbar";
-import Add from "../add";
+import Navbar from "../navbar.jsx";
+import Sidebar from "../sidebar.jsx";
+import Rightbar from "../rightbar.jsx";
+import Add from "../add.jsx";
 import { changeTheme } from "../../store/store.tsx";
 
 const Main = (props) => {

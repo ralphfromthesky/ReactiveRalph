@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Main from "../components/main/main";
+import Main from "../components/main/main.jsx";
 import { Box } from "@mui/system";
-import UseEffectChild from "../components/useEffectChild";
+import UseEffectChild from "../components/useEffectChild.jsx";
 import Typography from "@mui/material/Typography";
-import GlobalModal from "../components/material/globalModal";
+import GlobalModal from "../components/material/globalModal.jsx";
 import { changeTheme } from "../store/store.tsx";
 
 const UseEffect = () => {

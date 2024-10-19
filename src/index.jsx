@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
+import App from "./App.jsx";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "./theme.js";
 import { QueryClient, QueryClientProvider} from "@tanstack/react-query";

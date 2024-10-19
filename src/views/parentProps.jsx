@@ -1,8 +1,8 @@
 import { Box, Typography, Button } from "@mui/material";
 import React, { useState } from "react";
-import Main from "../components/main/main";
-import PropsChildren from "./parentPropsChildren";
-import GlobalModal from "../components/material/globalModal";
+import Main from "../components/main/main.jsx";
+import PropsChildren from "./parentPropsChildren.jsx";
+import GlobalModal from "../components/material/globalModal.jsx";
 import { changeTheme } from "../store/store.tsx";
 import {ReusableButtons} from '../components/reusableComponents/reusableButtons.tsx'
 

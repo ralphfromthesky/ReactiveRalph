@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import React, { useState, createContext } from "react";
-import Main from "../components/main/main";
-import Login from "./login";
-import User from "./user";
+import Main from "../components/main/main.jsx";
+import Login from "./login.jsx";
+import User from "./user.jsx";
 import { changeTheme } from "../store/store.tsx";
 
 export const appContext = createContext();

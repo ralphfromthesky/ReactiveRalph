@@ -13,7 +13,7 @@ import styled from "@emotion/styled";
 import PetsIcon from "@mui/icons-material/Pets";
 import { changeTheme } from "../store/store.tsx";
 
-import { theme } from "../theme";
+import { theme } from "../theme.js";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";

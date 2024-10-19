@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Main from "../components/main/main";
+import Main from "../components/main/main.jsx";
 import { Box, Typography } from "@mui/material";
-import PassingDataFromChildToparentChild from "./passingDataFromChildToparentChild";
+import PassingDataFromChildToparentChild from "./passingDataFromChildToparentChild.jsx";
 import { changeTheme } from "../store/store.tsx";
 
 

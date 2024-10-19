@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import UseState from "./views/useState.tsx";
-import PassingDataFromChildToparent from "./views/passingDataFromChildToparent";
-import Feed from "./components/feed";
-import UseEffect from "./views/useEffect";
-import UseRef from "./views/useRef";
-import PageNotFound from "./views/pageNotFound";
-import Nested from "./views/nested";
-import NestedA from "./views/nestedA";
-import NestedB from "./views/nestedB";
-import Parentprops from "./views/parentProps";
-import Material from "./views/material";
-import UseMemo from "./views/useMemo";
-import UserReducer from "./views/userReducer";
-import UseContext from "./views/useContext";
-import UseCallback from "./views/useCallback";
+import PassingDataFromChildToparent from "./views/passingDataFromChildToparent.jsx";
+import Feed from "./components/feed.jsx";
+import UseEffect from "./views/useEffect.jsx";
+import UseRef from "./views/useRef.jsx";
+import PageNotFound from "./views/pageNotFound.jsx";
+import Nested from "./views/nested.jsx";
+import NestedA from "./views/nestedA.jsx";
+import NestedB from "./views/nestedB.jsx";
+import Parentprops from "./views/parentProps.jsx";
+import Material from "./views/material.jsx";
+import UseMemo from "./views/useMemo.jsx";
+import UserReducer from "./views/userReducer.jsx";
+import UseContext from "./views/useContext.jsx";
+import UseCallback from "./views/useCallback.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import UseLayoutEffect from "./views/useLayoutEffect";
-import UseImperativeHandle from "./views/useImperativeHandle";
-import ReactQuery from "./views/reactQuery";
+import UseLayoutEffect from "./views/useLayoutEffect.jsx";
+import UseImperativeHandle from "./views/useImperativeHandle.jsx";
+import ReactQuery from "./views/reactQuery.jsx";
 import Zustand from "./views/zustand.tsx";
 import Typescript from "./views/typescript.tsx";
 import UseHooks from "./views/useHooks.tsx";
@@ -32,7 +32,7 @@ import Crud from './components/apps/crud.tsx'
 
 // import LazyLoad from "./views/lazyLoad";
 // this lazyloading is for performance speed or code splitting to speed up the loading
-const LazyLoad = React.lazy(() => import("./views/lazyLoad"));
+const LazyLoad = React.lazy(() => import("./views/lazyLoad.jsx"));
 
 function App() {
   return (

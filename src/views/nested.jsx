@@ -1,5 +1,5 @@
 import React from "react";
-import Main from "../components/main/main";
+import Main from "../components/main/main.jsx";
 import { Box, Typography } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import { changeTheme } from "../store/store.tsx";

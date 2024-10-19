@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Main from "../components/main/main.js";
+import Main from "../components/main/main.jsx";
 import { Box, Button, Typography, TextField, Avatar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { changeTheme, setImageAvatar } from "../store/store.tsx";
-import GlobalModal from "../components/material/globalModal.js";
+import GlobalModal from "../components/material/globalModal.jsx";
 import { motion } from "framer-motion";
 
 

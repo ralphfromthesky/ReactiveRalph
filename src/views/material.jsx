@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Main from "../components/main/main";
+import Main from "../components/main/main.jsx";
 import { Box, Button, Typography } from "@mui/material";
-import GlobalModal from "../components/material/globalModal";
+import GlobalModal from "../components/material/globalModal.jsx";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import TextFiedlGlobal from "../components/material/textField";
-import RadioButton from "../components/material/radioButton";
+import TextFiedlGlobal from "../components/material/textField.jsx";
+import RadioButton from "../components/material/radioButton.jsx";
 import { changeTheme } from "../store/store.tsx";
 import BasicSelect from "../components/material/select.tsx";
 import CustomTabPanel from "../components/material/tabs.tsx";
